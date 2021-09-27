@@ -7,49 +7,47 @@
     android:padding="10dp"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <FrameLayout
+        android:id="@+id/shapes_canvas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_square"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_square"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/PeakTestDrawButton"
+        android:drawableTop="@drawable/ic_square"
+        android:text="@string/square"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/ic_square"/>
+        app:layout_constraintEnd_toStartOf="@+id/btn_circle"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/btn_circle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/PeakTestDrawButton"
+        android:drawableTop="@drawable/ic_circle"
+        android:text="@string/circle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_square"
         app:layout_constraintEnd_toStartOf="@+id/btn_triangle"
-        android:background="@drawable/ic_circle"/>
+        app:layout_constraintStart_toEndOf="@+id/btn_square" />
+
     <Button
         android:id="@+id/btn_triangle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/PeakTestDrawButton"
+        android:drawableTop="@drawable/ic_triangle"
+        android:text="@string/triangle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_circle"
         app:layout_constraintEnd_toStartOf="@+id/btn_undo"
-        android:background="@drawable/ic_triangle"/>
+        app:layout_constraintStart_toEndOf="@+id/btn_circle" />
 
     <Button
         android:id="@+id/btn_undo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_cross"
+        style="@style/PeakTestDrawButton"
+        android:drawableTop="@drawable/ic_cross"
+        android:text="@string/undo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_triangle" />
