@@ -1,22 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".ui.stats.StatsFragment">
 
-    <TextView
-        android:id="@+id/text_dashboard"
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.che.peaktask.ui.home.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_squares"
+            style="@style/PeakTestStatsText"
+            android:drawableStart="@drawable/ic_square"
+            android:text="100"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_del_square" />
+
+        <TextView
+            android:id="@+id/text_circles"
+            style="@style/PeakTestStatsText"
+            android:drawableStart="@drawable/ic_circle"
+            android:text="100"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_del_circle" />
+
+        <TextView
+            android:id="@+id/text_triangles"
+            style="@style/PeakTestStatsText"
+            android:drawableStart="@drawable/ic_triangle"
+            android:text="100"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_del_triangle" />
+
+        <Button
+            android:id="@+id/btn_del_square"
+            style="@style/PeakTestDelButton"
+            android:onClick="@{view -> viewModel.onDeleteSquares()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_del_circle"
+            style="@style/PeakTestDelButton"
+            android:onClick="@{view -> viewModel.onDeleteCircles()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_del_square" />
+
+        <Button
+            android:id="@+id/btn_del_triangle"
+            style="@style/PeakTestDelButton"
+            android:onClick="@{view -> viewModel.onDeleteTriangles()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_del_circle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
