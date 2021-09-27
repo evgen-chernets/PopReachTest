@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.che.peaktask.usecase.PeakShape
 import com.che.peaktask.usecase.ShapeController
 
-class HomeViewModel: ViewModel() {
+class MainViewModel: ViewModel() {
 
     private var shapeController: ShapeController = ShapeController()
 

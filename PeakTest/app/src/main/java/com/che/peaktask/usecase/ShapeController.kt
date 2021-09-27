@@ -1,4 +1,4 @@
-package com.che.peaktest.usecase
+package com.che.peaktask.usecase
 
 import kotlin.collections.ArrayList
 
@@ -6,25 +6,25 @@ class ShapeController() {
     private var maxX = 0
     private var maxY = 0
     private var event: PeakEvent? = null
-     val shapes = ArrayList<PeakShape>()
+    val shapes = ArrayList<PeakShape>()
 
-    fun setBounds(x: Int, y: Int){
+    fun setBounds(x: Int, y: Int) {
         maxX = x
         maxY = y
     }
 
     fun addCircle() {
-        shapes.add(PeakShape(PeakShape.Type.Circle, getRandomX(),getRandomY()))
+        shapes.add(PeakShape(PeakShape.Type.Circle, getRandomX(), getRandomY()))
         event = PeakEvent(shapes.size - 1, PeakEvent.Type.Add)
     }
 
     fun addSquare() {
-        shapes.add(PeakShape(PeakShape.Type.Square, getRandomX(),getRandomY()))
+        shapes.add(PeakShape(PeakShape.Type.Square, getRandomX(), getRandomY()))
         event = PeakEvent(shapes.size - 1, PeakEvent.Type.Add)
     }
 
     fun addTriangle() {
-        shapes.add(PeakShape(PeakShape.Type.Triangle, getRandomX(),getRandomY()))
+        shapes.add(PeakShape(PeakShape.Type.Triangle, getRandomX(), getRandomY()))
         event = PeakEvent(shapes.size - 1, PeakEvent.Type.Add)
     }
 
@@ -43,13 +43,16 @@ class ShapeController() {
     }
 
     fun undo() {
-        when (event?.type) {
-            PeakEvent.Type.Add -> {
-                shapes.removeAt(event!!.index)
+        if (event != null) {
+            when (event!!.type) {
+                PeakEvent.Type.Add -> {
+                    shapes.removeAt(event!!.index)
+                }
+                PeakEvent.Type.Transform -> {
+                    shapes[event!!.index].reverseTransform()
+                }
             }
-            PeakEvent.Type.Transform -> {
-                shapes[event!!.index].reverseTransform()
-            }
+            event = null
         }
     }
 
