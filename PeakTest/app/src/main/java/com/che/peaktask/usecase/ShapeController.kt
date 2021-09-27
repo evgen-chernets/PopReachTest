@@ -37,9 +37,8 @@ class ShapeController() {
         shapes.removeAt(index)
     }
 
-    fun deleteAll() {
-        shapes.clear()
-        event = null
+    fun deleteShapes(type: PeakShape.Type) {
+        shapes.removeAll{ it.shapeType == type }
     }
 
     fun undo() {
