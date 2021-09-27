@@ -2,9 +2,16 @@ package com.che.peaktest.usecase
 
 import kotlin.collections.ArrayList
 
-class ShapeController(private val maxX: Int, private val maxY: Int) {
+class ShapeController() {
+    private var maxX = 0
+    private var maxY = 0
     private var event: PeakEvent? = null
      val shapes = ArrayList<PeakShape>()
+
+    fun setBounds(x: Int, y: Int){
+        maxX = x
+        maxY = y
+    }
 
     fun addCircle() {
         shapes.add(PeakShape(PeakShape.Type.Circle, getRandomX(),getRandomY()))

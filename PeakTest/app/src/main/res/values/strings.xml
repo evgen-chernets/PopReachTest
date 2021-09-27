@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PeakTest</string>
+    <string name="app_name">PeakTask</string>
     <string name="title_home">Home</string>
     <string name="title_stats">Stats</string>
     <string name="square">Square</string>

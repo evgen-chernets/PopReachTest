@@ -1,4 +1,4 @@
-package com.che.peaktest.ui.stats
+package com.che.peaktask.ui.stats
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

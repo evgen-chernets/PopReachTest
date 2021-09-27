@@ -8,7 +8,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.che.peaktest.ui.home.HomeViewModel" />
+            type="com.che.peaktask.ui.home.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:padding="10dp">
 
-        <com.che.peaktest.ui.custom.PeakShapesCanvas
+        <com.che.peaktask.ui.custom.PeakShapesCanvas
             android:id="@+id/shapes_canvas"
             android:layout_width="match_parent"
             android:layout_height="0dp"

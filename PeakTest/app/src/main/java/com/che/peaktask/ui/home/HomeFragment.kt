@@ -27,14 +27,18 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        homeViewModel.initController(binding.shapesCanvas.width, binding.shapesCanvas.height)
-
+        binding.shapesCanvas.post { initController() }
         val shapesCanvas: PeakShapesCanvas = binding.shapesCanvas
         homeViewModel.shapesData.observe(viewLifecycleOwner, {
             shapesCanvas.drawShapes(it)
         })
         return root
+    }
+
+    private fun initController() {
+        val x = binding.shapesCanvas.measuredWidth
+        val y = binding.shapesCanvas.measuredHeight
+        homeViewModel.initController(x, y)
     }
 
     override fun onDestroyView() {

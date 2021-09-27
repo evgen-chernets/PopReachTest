@@ -1,4 +1,4 @@
-package com.che.peaktest
+package com.che.peaktask
 
 import org.junit.Test
 
