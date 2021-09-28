@@ -24,6 +24,7 @@ class ShapeController {
     }
 
     fun deleteShape(index: Int) {
+        event = PeakEvent(index, PeakEvent.Type.Delete, shapes[index])
         shapes.removeAt(index)
     }
 
@@ -36,6 +37,7 @@ class ShapeController {
             when (event!!.type) {
                 PeakEvent.Type.Add -> shapes.removeAt(event!!.index)
                 PeakEvent.Type.Transform -> shapes[event!!.index].reverseTransform()
+                PeakEvent.Type.Delete -> shapes.add(event!!.index, event!!.deletedShape!!)
             }
             event = null
         }
