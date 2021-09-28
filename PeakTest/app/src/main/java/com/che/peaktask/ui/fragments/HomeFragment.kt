@@ -1,4 +1,4 @@
-package com.che.peaktask.ui.home
+package com.che.peaktask.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import com.che.peaktask.R
 import com.che.peaktask.databinding.FragmentHomeBinding
+import com.che.peaktask.ui.MainViewModel
 import com.che.peaktask.ui.custom.PeakShapesCanvas
 
 class HomeFragment : Fragment() {
@@ -24,7 +24,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 

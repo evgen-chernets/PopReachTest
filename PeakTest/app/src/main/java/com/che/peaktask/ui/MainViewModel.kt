@@ -1,9 +1,9 @@
-package com.che.peaktask.ui.home
+package com.che.peaktask.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.che.peaktask.usecase.PeakShape
-import com.che.peaktask.usecase.ShapeController
+import com.che.peaktask.model.PeakShape
+import com.che.peaktask.model.ShapeController
 
 class MainViewModel: ViewModel() {
 
@@ -18,17 +18,17 @@ class MainViewModel: ViewModel() {
     }
 
     fun onDrawSquareClicked() {
-        shapeController.addSquare()
+        shapeController.addShape(PeakShape.Type.Square)
         shapesData.postValue(shapeController.shapes)
     }
 
     fun onDrawCircleClicked() {
-        shapeController.addCircle()
+        shapeController.addShape(PeakShape.Type.Circle)
         shapesData.postValue(shapeController.shapes)
     }
 
     fun onDrawTriangleClicked() {
-        shapeController.addTriangle()
+        shapeController.addShape(PeakShape.Type.Triangle)
         shapesData.postValue(shapeController.shapes)
     }
 

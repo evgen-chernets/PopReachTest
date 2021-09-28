@@ -1,8 +1,8 @@
-package com.che.peaktask.usecase
+package com.che.peaktask.model
 
 import kotlin.collections.ArrayList
 
-class ShapeController() {
+class ShapeController {
     private var maxX = 0
     private var maxY = 0
     private var event: PeakEvent? = null
@@ -13,18 +13,8 @@ class ShapeController() {
         maxY = y
     }
 
-    fun addCircle() {
-        shapes.add(PeakShape(PeakShape.Type.Circle, getRandomX(), getRandomY()))
-        event = PeakEvent(shapes.size - 1, PeakEvent.Type.Add)
-    }
-
-    fun addSquare() {
-        shapes.add(PeakShape(PeakShape.Type.Square, getRandomX(), getRandomY()))
-        event = PeakEvent(shapes.size - 1, PeakEvent.Type.Add)
-    }
-
-    fun addTriangle() {
-        shapes.add(PeakShape(PeakShape.Type.Triangle, getRandomX(), getRandomY()))
+    fun addShape(type: PeakShape.Type) {
+        shapes.add(PeakShape(type, getRandomX(), getRandomY()))
         event = PeakEvent(shapes.size - 1, PeakEvent.Type.Add)
     }
 
@@ -44,12 +34,8 @@ class ShapeController() {
     fun undo() {
         if (event != null) {
             when (event!!.type) {
-                PeakEvent.Type.Add -> {
-                    shapes.removeAt(event!!.index)
-                }
-                PeakEvent.Type.Transform -> {
-                    shapes[event!!.index].reverseTransform()
-                }
+                PeakEvent.Type.Add -> shapes.removeAt(event!!.index)
+                PeakEvent.Type.Transform -> shapes[event!!.index].reverseTransform()
             }
             event = null
         }

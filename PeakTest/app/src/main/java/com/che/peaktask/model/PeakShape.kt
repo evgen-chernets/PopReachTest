@@ -1,4 +1,4 @@
-package com.che.peaktask.usecase
+package com.che.peaktask.model
 
 class PeakShape(var shapeType: Type, val x: Int, val y: Int) {
     fun transform() {

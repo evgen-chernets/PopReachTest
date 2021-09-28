@@ -5,13 +5,13 @@ import android.util.AttributeSet
 import android.widget.FrameLayout
 import android.widget.ImageView
 import com.che.peaktask.R
-import com.che.peaktask.usecase.PeakShape
+import com.che.peaktask.model.PeakShape
 
 class PeakShapesCanvas @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {
 
-    fun drawShapes(shapes: List<PeakShape>,  listener: OnClickListener, longListener: OnLongClickListener){
+    fun drawShapes(shapes: List<PeakShape>, listener: OnClickListener, longListener: OnLongClickListener){
         removeAllViews()
         for ((i, shape) in shapes.withIndex() ) {
             val view = ImageView(context)

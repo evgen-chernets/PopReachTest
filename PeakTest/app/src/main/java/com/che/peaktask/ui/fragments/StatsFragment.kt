@@ -1,4 +1,4 @@
-package com.che.peaktask.ui.stats
+package com.che.peaktask.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.che.peaktask.databinding.FragmentStatsBinding
-import com.che.peaktask.ui.home.MainViewModel
-import com.che.peaktask.usecase.PeakShape
+import com.che.peaktask.ui.MainViewModel
+import com.che.peaktask.model.PeakShape
 
 class StatsFragment : Fragment() {
 
@@ -26,7 +24,7 @@ class StatsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentStatsBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -34,10 +32,10 @@ class StatsFragment : Fragment() {
         val textViewSquares: TextView = binding.textSquares
         val textViewCircles: TextView = binding.textCircles
         val textViewTriangles: TextView = binding.textTriangles
-        mainViewModel.shapesData.observe(viewLifecycleOwner, {
-            textViewSquares.text = it.filter { it.shapeType == PeakShape.Type.Square }.size.toString()
-            textViewCircles.text = it.filter { it.shapeType == PeakShape.Type.Circle }.size.toString()
-            textViewTriangles.text = it.filter { it.shapeType == PeakShape.Type.Triangle }.size.toString()
+        mainViewModel.shapesData.observe(viewLifecycleOwner, { list ->
+            textViewSquares.text = list.filter { it.shapeType == PeakShape.Type.Square }.size.toString()
+            textViewCircles.text = list.filter { it.shapeType == PeakShape.Type.Circle }.size.toString()
+            textViewTriangles.text = list.filter { it.shapeType == PeakShape.Type.Triangle }.size.toString()
         })
 
         binding.viewModel = mainViewModel

@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.che.peaktask.ui.home.HomeFragment"
+        android:name="com.che.peaktask.ui.fragments.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_stats"
-        android:name="com.che.peaktask.ui.stats.StatsFragment"
+        android:name="com.che.peaktask.ui.fragments.StatsFragment"
         android:label="@string/title_stats"
         tools:layout="@layout/fragment_stats" />
 

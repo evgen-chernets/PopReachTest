@@ -1,4 +1,4 @@
-package com.che.peaktask.usecase
+package com.che.peaktask.model
 
 class PeakEvent(val index: Int, val type: Type) {
 

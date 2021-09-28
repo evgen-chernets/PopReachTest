@@ -9,7 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.che.peaktask.databinding.ActivityMainBinding
-import com.che.peaktask.ui.home.MainViewModel
+import com.che.peaktask.ui.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainViewModel: MainViewModel
