@@ -1,6 +1,6 @@
 package com.che.peaktask.model
 
-class PeakShape(var shapeType: Type, val x: Int, val y: Int) {
+class PeakShape(val id: Long, var shapeType: Type, val x: Int, val y: Int) {
     fun transform() {
         shapeType = when(shapeType) {
             Type.Circle -> Type.Triangle

@@ -1,11 +1,13 @@
 package com.che.peaktask.model
 
+import java.util.*
 import kotlin.collections.ArrayList
+import com.che.peaktask.model.PeakEvent.Type.*
 
 class ShapeController {
     private var maxX = 0
     private var maxY = 0
-    private var event: PeakEvent? = null
+    private var events = Stack<PeakEvent>()
     val shapes = ArrayList<PeakShape>()
 
     fun setBounds(x: Int, y: Int) {
@@ -14,33 +16,46 @@ class ShapeController {
     }
 
     fun addShape(type: PeakShape.Type) {
-        shapes.add(PeakShape(type, getRandomX(), getRandomY()))
-        event = PeakEvent(shapes.size - 1, PeakEvent.Type.Add)
+        shapes.add(PeakShape(System.currentTimeMillis(), type, getRandomX(), getRandomY()))
+        events.push(PeakEvent(Add, shapes.last()))
     }
 
     fun transformShape(index: Int) {
         shapes[index].transform()
-        event = PeakEvent(index, PeakEvent.Type.Transform)
+        events.push(PeakEvent(Transform, shapes[index]))
     }
 
     fun deleteShape(index: Int) {
-        event = PeakEvent(index, PeakEvent.Type.Delete, shapes[index])
+        events.push(PeakEvent(Delete, shapes[index]))
         shapes.removeAt(index)
     }
 
     fun deleteShapes(type: PeakShape.Type) {
-        shapes.removeAll{ it.shapeType == type }
+        shapes.removeAll { it.shapeType == type }
+
+        val eventsToRemove =
+            events.filter { (it.type == Add || it.type == Transform) && it.shape.shapeType == type }
+        for (event in eventsToRemove) {
+            events.removeAll(events.filter { it.shape.id == event.shape.id })
+        }
     }
 
     fun undo() {
-        if (event != null) {
-            when (event!!.type) {
-                PeakEvent.Type.Add -> shapes.removeAt(event!!.index)
-                PeakEvent.Type.Transform -> shapes[event!!.index].reverseTransform()
-                PeakEvent.Type.Delete -> shapes.add(event!!.index, event!!.deletedShape!!)
+        if (events.isNotEmpty()) {
+            val undoEvent = events.pop()
+            when (undoEvent.type) {
+                Add -> shapes.remove(undoEvent.shape)
+                Transform -> undoEvent.shape.reverseTransform()
+                Delete -> shapes.add(undoEvent.shape)
             }
-            event = null
         }
+    }
+
+    fun clear() {
+        maxX = 0
+        maxY = 0
+        shapes.clear()
+        events.clear()
     }
 
     private fun getRandomX(): Int {
